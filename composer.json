@@ -1,0 +1,26 @@
+{
+  "name": "razielsd/pheanstalkdebug",
+  "description": "Debug tool for pheanstalk",
+  "license": "MIT",
+  "type": "library",
+  "keywords": ["pheanstalk","beanstalk"],
+  "homepage": "https://github.com/razielsd/pheanstalkdebug",
+  "authors": [
+    {
+      "name": "Fateev Algis",
+      "email": "zrandom@mail.ru",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.0",
+    "phpunit/phpunit": ">6.1",
+    "pda/pheanstalk": "^3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "razielsd\\pheanstalkdebug\\": "src/pheanstalkdebug/"
+    }
+  }
+}
