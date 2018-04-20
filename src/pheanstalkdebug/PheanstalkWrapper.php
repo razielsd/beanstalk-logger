@@ -9,7 +9,7 @@ use Pheanstalk\PheanstalkInterface;
 use Pheanstalk\Connection;
 
 
-class PheanstalkDebug implements PheanstalkInterface
+class PheanstalkWrapper implements PheanstalkInterface
 {
     /** @var PheanstalkInterface */
     protected $pheanstalk = null;
@@ -18,7 +18,7 @@ class PheanstalkDebug implements PheanstalkInterface
     protected $debugger = null;
 
 
-    public function __construct(PheanstalkInterface $pheanstalk, DebugInterface $debugger)
+    public function init(PheanstalkInterface $pheanstalk, DebugInterface $debugger)
     {
         $this->pheanstalk = $pheanstalk;
         $this->debugger = $debugger;

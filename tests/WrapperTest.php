@@ -4,11 +4,11 @@ require_once (__DIR__ . '/../vendor/autoload.php');
 
 use PHPUnit\Framework\TestCase;
 use Pheanstalk\Pheanstalk;
-use razielsd\pheanstalkdebug\PheanstalkDebug;
+use razielsd\pheanstalkdebug\PheanstalkWrapper;
 use razielsd\pheanstalkdebug\TestDebugger;
 
 
-class DebugTest extends TestCase
+class WrapperTest extends TestCase
 {
     protected $host = '127.0.0.1';
     protected $port = 11300;
@@ -19,7 +19,7 @@ class DebugTest extends TestCase
 
     public function testPut()
     {
-        $client = $this->getClient();
+        $client = $this->getWrapper();
         $client->useTube($this->tubeName)->put('test:data');
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -29,7 +29,7 @@ class DebugTest extends TestCase
 
     public function testPutInTube()
     {
-        $client = $this->getClient();
+        $client = $this->getWrapper();
         $client->putInTube($this->tubeName, 'test:data');
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -39,7 +39,7 @@ class DebugTest extends TestCase
 
     public function testUseTube()
     {
-        $client = $this->getClient();
+        $client = $this->getWrapper();
         $client->useTube($this->tubeName);
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -49,7 +49,7 @@ class DebugTest extends TestCase
 
     public function testWatch()
     {
-        $client = $this->getClient();
+        $client = $this->getWrapper();
         $client->watch($this->tubeName);
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -59,7 +59,7 @@ class DebugTest extends TestCase
 
     public function testWatchOnly()
     {
-        $client = $this->getClient();
+        $client = $this->getWrapper();
         $client->watchOnly($this->tubeName);
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -67,11 +67,12 @@ class DebugTest extends TestCase
     }
 
 
-    protected function getClient(): PheanstalkDebug
+    protected function getWrapper(): PheanstalkWrapper
     {
         $pheanstalk = new Pheanstalk($this->host, $this->port);
         $this->debugger = new TestDebugger();
-        $client = new PheanstalkDebug($pheanstalk, $this->debugger);
-        return $client;
+        $wrapper = new PheanstalkWrapper();
+        $wrapper->init($pheanstalk, $this->debugger);
+        return $wrapper;
     }
 }
