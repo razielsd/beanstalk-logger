@@ -27,7 +27,7 @@ class PheanstalkFactory
 }
 ```
 
-# Symphony service example
+# Symfony service example
 
 ```
     app.pheanstalk:
