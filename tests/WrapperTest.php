@@ -71,8 +71,7 @@ class WrapperTest extends TestCase
     {
         $pheanstalk = new Pheanstalk($this->host, $this->port);
         $this->debugger = new TestDebugger();
-        $wrapper = new PheanstalkWrapper();
-        $wrapper->init($pheanstalk, $this->debugger);
+        $wrapper = new PheanstalkWrapper($pheanstalk, $this->debugger);
         return $wrapper;
     }
 }

@@ -18,7 +18,7 @@ class PheanstalkWrapper implements PheanstalkInterface
     protected $debugger = null;
 
 
-    public function init(PheanstalkInterface $pheanstalk, DebugInterface $debugger)
+    public function __construct(PheanstalkInterface $pheanstalk, DebugInterface $debugger)
     {
         $this->pheanstalk = $pheanstalk;
         $this->debugger = $debugger;
