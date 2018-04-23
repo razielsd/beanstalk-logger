@@ -19,10 +19,10 @@ class BeanstalkFactory
 {
     public static function factory(string $host, int $port, bool $enableLog)
     {
-        $pheanstalk = new Pheanstalk($host, $port,1.0, true);
-        $debugger = new DefaultLogger();
-        $debugger->enable($enableLog);
-        return new BeanstalkWrapper($pheanstalk, $debugger);
+        $pheanstalk = new Pheanstalk($host, $port, 1.0, true);
+        $logger = new DefaultLogger();
+        $logger->enable($enableLog);
+        return new PheanstalkWrapper($pheanstalk, $logger);
     }
 }
 ```
