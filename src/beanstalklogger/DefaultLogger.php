@@ -3,7 +3,7 @@
 namespace razielsd\beanstalklogger;
 
 
-class DefaultDebugger implements DebugInterface
+class DefaultLogger implements DebugInterface
 {
     const STRING_MAX_LENGTH = 50;
 

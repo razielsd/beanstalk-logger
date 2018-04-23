@@ -3,7 +3,7 @@
 namespace razielsd\beanstalklogger;
 
 
-class TestDebugger implements DebugInterface
+class TestLogger implements DebugInterface
 {
     protected $stack = [];
 

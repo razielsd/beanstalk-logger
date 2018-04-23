@@ -3,10 +3,10 @@
 require_once (__DIR__ . '/../vendor/autoload.php');
 
 use PHPUnit\Framework\TestCase;
-use razielsd\beanstalklogger\DefaultDebugger;
+use razielsd\beanstalklogger\DefaultLogger;
 
 
-class DefaultDebuggerTest extends TestCase
+class DefaultLoggerTest extends TestCase
 {
 
     protected $filename = '/tmp/debugger-test.log';
@@ -55,7 +55,7 @@ class DefaultDebuggerTest extends TestCase
         $debugger->log('put', [$debugger]);
 
         $this->assertEquals(
-            'Beanstalk: put, params: [object(razielsd\beanstalklogger\DefaultDebugger)]',
+            'Beanstalk: put, params: [object(razielsd\beanstalklogger\DefaultLogger)]',
             trim($this->getLog())
         );
     }
@@ -83,10 +83,10 @@ class DefaultDebuggerTest extends TestCase
 
 
 
-    protected function getDebugger(): DefaultDebugger
+    protected function getDebugger(): DefaultLogger
     {
         $this->filename = '/tmp/ph-debug-' . date('YmdTHis') . '.' . mt_rand(10000, 99999) . '.log';
-        $debugger = new DefaultDebugger();
+        $debugger = new DefaultLogger();
         $debugger->setFilename($this->filename);
         return $debugger;
     }

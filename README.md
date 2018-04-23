@@ -11,7 +11,7 @@ Debug for beanstalk
 namespace AppBundle\Pheanstalk;
 
 use Pheanstalk\Pheanstalk;
-use razielsd\beanstalklogger\DefaultDebugger;
+use razielsd\beanstalklogger\DefaultLogger;
 use razielsd\beanstalklogger\BeanstalkWrapper;
 
 
@@ -20,7 +20,7 @@ class BeanstalkFactory
     public static function factory(string $host, int $port, bool $enableLog)
     {
         $pheanstalk = new Pheanstalk($host, $port,1.0, true);
-        $debugger = new DefaultDebugger();
+        $debugger = new DefaultLogger();
         $debugger->enable($enableLog);
         return new BeanstalkWrapper($pheanstalk, $debugger);
     }
