@@ -3,16 +3,27 @@ Debug for pheanstalk
 
 #How to use
  * Type hinting: Pheanstalk -> PheanstalkInterface
- * Configure your instance of pheanstalk
+ * Configure your factory for pheanstalk
  
  ```
-class PheanstalkInstance extends PheanstalkDebug
+<?php
+
+namespace AppBundle\Pheanstalk;
+
+use Pheanstalk\Pheanstalk;
+use razielsd\pheanstalkdebug\DefaultDebugger;
+use razielsd\pheanstalkdebug\PheanstalkWrapper;
+
+
+class PheanstalkFactory
 {
-    public function __construct($host, $port, $connectTimeout, $connectPersistent)
+    public static function factory(string $host, int $port, bool $enableLog)
     {
-        $pheanstalk = new Pheanstalk($host, $port, $connectTimeout, $connectPersistent);
+        $pheanstalk = new Pheanstalk($host, $port,1.0, true);
         $debugger = new DefaultDebugger();
-        $this->init($pheanstalk, $debugger);
+        $debugger->enable($enableLog);
+        return new PheanstalkWrapper($pheanstalk, $debugger);
     }
 }
 ```
+

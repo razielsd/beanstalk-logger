@@ -6,12 +6,22 @@ namespace razielsd\pheanstalkdebug;
 class DefaultDebugger implements DebugInterface
 {
     const STRING_MAX_LENGTH = 50;
+
+
     protected $filename = '/tmp/pheanstalk.log';
+    protected $isEnabled = true;
 
 
     public function setFilename(string $filename)
     {
         $this->filename = $filename;
+        return $this;
+    }
+
+
+    public function enable(bool $isEnabled = true)
+    {
+        $this->isEnabled = $isEnabled;
         return $this;
     }
 
@@ -59,6 +69,8 @@ class DefaultDebugger implements DebugInterface
 
     protected function write(string $message)
     {
-        file_put_contents($this->filename, $message . "\n", FILE_APPEND);
+        if ($this->isEnabled) {
+            file_put_contents($this->filename, $message . "\n", FILE_APPEND);
+        }
     }
 }
