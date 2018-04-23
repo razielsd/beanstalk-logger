@@ -19,7 +19,7 @@ class WrapperTest extends TestCase
 
     public function testPut()
     {
-        $client = $this->getWrapper();
+        $client = $this->createWrapper();
         $client->useTube($this->tubeName)->put('test:data');
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -29,7 +29,7 @@ class WrapperTest extends TestCase
 
     public function testPutInTube()
     {
-        $client = $this->getWrapper();
+        $client = $this->createWrapper();
         $client->putInTube($this->tubeName, 'test:data');
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -39,7 +39,7 @@ class WrapperTest extends TestCase
 
     public function testUseTube()
     {
-        $client = $this->getWrapper();
+        $client = $this->createWrapper();
         $client->useTube($this->tubeName);
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -49,7 +49,7 @@ class WrapperTest extends TestCase
 
     public function testWatch()
     {
-        $client = $this->getWrapper();
+        $client = $this->createWrapper();
         $client->watch($this->tubeName);
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -59,7 +59,7 @@ class WrapperTest extends TestCase
 
     public function testWatchOnly()
     {
-        $client = $this->getWrapper();
+        $client = $this->createWrapper();
         $client->watchOnly($this->tubeName);
         $req = $this->debugger->getLast();
         $this->assertNotNull($req, 'No command found');
@@ -67,7 +67,7 @@ class WrapperTest extends TestCase
     }
 
 
-    protected function getWrapper(): PheanstalkWrapper
+    protected function createWrapper(): PheanstalkWrapper
     {
         $pheanstalk = new Pheanstalk($this->host, $this->port);
         $this->debugger = new TestDebugger();

@@ -1,7 +1,7 @@
 # pheanstalk-debug
 Debug for pheanstalk
 
-#How to use
+# How to use
  * Type hinting: Pheanstalk -> PheanstalkInterface
  * Configure your factory for pheanstalk
  
@@ -27,3 +27,12 @@ class PheanstalkFactory
 }
 ```
 
+# Symphony service example
+
+```
+    app.pheanstalk:
+        class: razielsd\pheanstalkdebug\PheanstalkWrapper
+        factory: ['AppBundle\Pheanstalk\PheanstalkFactory', factory]
+        arguments: ['%beanstalkd_host%', '%beanstalkd_port%', true]
+
+```
