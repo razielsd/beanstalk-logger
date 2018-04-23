@@ -1,4 +1,4 @@
-# pheanstalk-debug
+# beanstalk-logger
 Debug for beanstalk
 
 # How to use
