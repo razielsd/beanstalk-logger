@@ -1,6 +1,6 @@
 <?php
 
-namespace razielsd\pheanstalkdebug;
+namespace razielsd\beanstalklogger;
 
 
 class DefaultDebugger implements DebugInterface
@@ -61,7 +61,7 @@ class DefaultDebugger implements DebugInterface
                 $paramList[] = 'object(' . get_class($value) . ')';
             }
         }
-        $message =  "Pheanstalk: {$method}";
+        $message =  "Beanstalk: {$method}";
         $message .= ', params: [' . join(', ', $paramList) . ']';
         $this->write($message);
     }

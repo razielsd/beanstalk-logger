@@ -1,6 +1,6 @@
 <?php
 
-namespace razielsd\pheanstalkdebug;
+namespace razielsd\beanstalklogger;
 
 
 interface DebugInterface

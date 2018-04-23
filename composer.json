@@ -1,10 +1,10 @@
 {
-  "name": "razielsd/pheanstalkdebug",
-  "description": "Debug tool for pheanstalk",
+  "name": "razielsd/beanstalk-logger",
+  "description": "Log tool for beanstalk",
   "license": "MIT",
   "type": "library",
   "keywords": ["pheanstalk","beanstalk"],
-  "homepage": "https://github.com/razielsd/pheanstalkdebug",
+  "homepage": "https://github.com/razielsd/beanstalk-logger",
   "authors": [
     {
       "name": "Fateev Algis",
@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "razielsd\\pheanstalkdebug\\": "src/pheanstalkdebug/"
+      "razielsd\\beanstalklogger\\": "src/beanstalklogger/"
     }
   }
 }

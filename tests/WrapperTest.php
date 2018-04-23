@@ -4,8 +4,8 @@ require_once (__DIR__ . '/../vendor/autoload.php');
 
 use PHPUnit\Framework\TestCase;
 use Pheanstalk\Pheanstalk;
-use razielsd\pheanstalkdebug\PheanstalkWrapper;
-use razielsd\pheanstalkdebug\TestDebugger;
+use razielsd\beanstalklogger\BeanstalkWrapper;
+use razielsd\beanstalklogger\TestDebugger;
 
 
 class WrapperTest extends TestCase
@@ -67,11 +67,11 @@ class WrapperTest extends TestCase
     }
 
 
-    protected function createWrapper(): PheanstalkWrapper
+    protected function createWrapper(): BeanstalkWrapper
     {
         $pheanstalk = new Pheanstalk($this->host, $this->port);
         $this->debugger = new TestDebugger();
-        $wrapper = new PheanstalkWrapper($pheanstalk, $this->debugger);
+        $wrapper = new BeanstalkWrapper($pheanstalk, $this->debugger);
         return $wrapper;
     }
 }

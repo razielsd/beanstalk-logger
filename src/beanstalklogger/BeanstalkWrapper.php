@@ -2,14 +2,14 @@
 /**
  * https://github.com/pda/pheanstalk/blob/master/src/PheanstalkInterface.php
  */
-namespace razielsd\pheanstalkdebug;
+namespace razielsd\beanstalklogger;
 
 
 use Pheanstalk\PheanstalkInterface;
 use Pheanstalk\Connection;
 
 
-class PheanstalkWrapper implements PheanstalkInterface
+class BeanstalkWrapper implements PheanstalkInterface
 {
     /** @var PheanstalkInterface */
     protected $pheanstalk = null;

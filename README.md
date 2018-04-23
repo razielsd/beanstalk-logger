@@ -1,5 +1,5 @@
 # pheanstalk-debug
-Debug for pheanstalk
+Debug for beanstalk
 
 # How to use
  * Type hinting: Pheanstalk -> PheanstalkInterface

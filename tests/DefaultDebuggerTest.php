@@ -3,7 +3,7 @@
 require_once (__DIR__ . '/../vendor/autoload.php');
 
 use PHPUnit\Framework\TestCase;
-use razielsd\pheanstalkdebug\DefaultDebugger;
+use razielsd\beanstalklogger\DefaultDebugger;
 
 
 class DefaultDebuggerTest extends TestCase
@@ -16,7 +16,7 @@ class DefaultDebuggerTest extends TestCase
         $debugger = $this->getDebugger();
         $debugger->log('put', [1, 2, 3, 4]);
 
-        $this->assertEquals('Pheanstalk: put, params: [1, 2, 3, 4]', trim($this->getLog()));
+        $this->assertEquals('Beanstalk: put, params: [1, 2, 3, 4]', trim($this->getLog()));
     }
 
 
@@ -26,7 +26,7 @@ class DefaultDebuggerTest extends TestCase
         $debugger = $this->getDebugger();
         $debugger->log('put', [1.1, 2.2, 3.3, 4.4]);
 
-        $this->assertEquals('Pheanstalk: put, params: [1.1, 2.2, 3.3, 4.4]', trim($this->getLog()));
+        $this->assertEquals('Beanstalk: put, params: [1.1, 2.2, 3.3, 4.4]', trim($this->getLog()));
     }
 
 
@@ -36,7 +36,7 @@ class DefaultDebuggerTest extends TestCase
         $debugger = $this->getDebugger();
         $debugger->log('putInTube', [true, false]);
 
-        $this->assertEquals('Pheanstalk: putInTube, params: [TRUE, FALSE]', trim($this->getLog()));
+        $this->assertEquals('Beanstalk: putInTube, params: [TRUE, FALSE]', trim($this->getLog()));
     }
 
 
@@ -45,7 +45,7 @@ class DefaultDebuggerTest extends TestCase
         $debugger = $this->getDebugger();
         $debugger->log('put', [null]);
 
-        $this->assertEquals('Pheanstalk: put, params: [NULL]', trim($this->getLog()));
+        $this->assertEquals('Beanstalk: put, params: [NULL]', trim($this->getLog()));
     }
 
 
@@ -55,7 +55,7 @@ class DefaultDebuggerTest extends TestCase
         $debugger->log('put', [$debugger]);
 
         $this->assertEquals(
-            'Pheanstalk: put, params: [object(razielsd\pheanstalkdebug\DefaultDebugger)]',
+            'Beanstalk: put, params: [object(razielsd\beanstalklogger\DefaultDebugger)]',
             trim($this->getLog())
         );
     }
@@ -66,7 +66,7 @@ class DefaultDebuggerTest extends TestCase
         $debugger = $this->getDebugger();
         $debugger->log('put', []);
 
-        $this->assertEquals('Pheanstalk: put, params: []', trim($this->getLog()));
+        $this->assertEquals('Beanstalk: put, params: []', trim($this->getLog()));
     }
 
 
@@ -76,7 +76,7 @@ class DefaultDebuggerTest extends TestCase
         $debugger->log('watch', [str_repeat('tubeName ', 100)]);
 
         $this->assertEquals(
-            'Pheanstalk: watch, params: ["tubeName tubeName tubeName tubeName tubeName tu..."]',
+            'Beanstalk: watch, params: ["tubeName tubeName tubeName tubeName tubeName tu..."]',
             trim($this->getLog())
         );
     }
