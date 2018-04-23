@@ -11,18 +11,18 @@ Debug for beanstalk
 namespace AppBundle\Pheanstalk;
 
 use Pheanstalk\Pheanstalk;
-use razielsd\pheanstalkdebug\DefaultDebugger;
-use razielsd\pheanstalkdebug\PheanstalkWrapper;
+use razielsd\beanstalklogger\DefaultDebugger;
+use razielsd\beanstalklogger\BeanstalkWrapper;
 
 
-class PheanstalkFactory
+class BeanstalkFactory
 {
     public static function factory(string $host, int $port, bool $enableLog)
     {
         $pheanstalk = new Pheanstalk($host, $port,1.0, true);
         $debugger = new DefaultDebugger();
         $debugger->enable($enableLog);
-        return new PheanstalkWrapper($pheanstalk, $debugger);
+        return new BeanstalkWrapper($pheanstalk, $debugger);
     }
 }
 ```
@@ -31,8 +31,8 @@ class PheanstalkFactory
 
 ```
     app.pheanstalk:
-        class: razielsd\pheanstalkdebug\PheanstalkWrapper
-        factory: ['AppBundle\Pheanstalk\PheanstalkFactory', factory]
+        class: razielsd\beanstalklogger\BeanstalkWrapper
+        factory: ['AppBundle\Beanstalk\BeanstalkFactory', factory]
         arguments: ['%beanstalkd_host%', '%beanstalkd_port%', true]
 
 ```
